@@ -11,7 +11,8 @@ export class FilterByName implements PipeTransform {
         searchText = searchText.toLowerCase();
         return items.filter( function(o) {
             return Object.keys(o).some( function(k) {
-                return o[k].toString().toLowerCase().includes( searchText );
+                if(k === 'name')
+                    return o[k].toString().toLowerCase().includes( searchText );
             });
         });
     }
